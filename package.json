@@ -9,11 +9,14 @@
   "private": true,
   "jest": {
     "testURL": "http://localhost",
-    "setupFiles": ["./src/utils/__mocks__/browserMocks.js"]
+    "setupFiles": [
+      "./src/utils/__mocks__/browserMocks.js"
+    ]
   },
   "scripts": {
     "start": "export NODE_ENV=development && webpack-dev-server --config webpack.config.dev.js",
-    "build": "export NODE_ENV=production && npm run clean && webpack -p --progress --colors --config webpack.config.prod.js",
+    "start:powershell": "$Env:NODE_ENV=\"development\"; ./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && export NODE_ENV=production && npm run clean && ./node_modules/.bin/webpack -p --progress --colors --config ./webpack.config.prod.js",
     "clean": "rimraf dist",
     "deploy:gh-pages": "npm run build && . ./deploy_gh_pages.sh",
     "eslint-check": "eslint $(find src -name '*.js' ! -name '*.spec.js')",
@@ -49,7 +52,8 @@
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.1.4",
-    "node-sass": "^4.11.0",
+    "node-gyp": "9.3.1",
+    "node-sass": "^8.0.0",
     "postcss": "^6.0.14",
     "postcss-loader": "^2.0.9",
     "prettier": "^1.9.2",
