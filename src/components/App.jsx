@@ -7,6 +7,7 @@ import MeterControl from './MeterControl';
 import MeterDisplay from './MeterDisplay';
 import TempoDisplay from './TempoDisplay';
 import TempoSlider from './TempoSlider';
+import TempoTap from './TempoTap';
 import PlayPauseBtn from './PlayPauseBtn';
 import VolumeControls from './VolumeControls';
 import preventDoubleTapZoom from '../utils/helpers';
@@ -48,6 +49,7 @@ class App extends Component {
       <div className="App" ref={this.createAppRef}>
         <div className="top-controls-panel">
           <TempoDisplay tempo={tempo} />
+          <TempoTap handleChange={setTempo} />
           <PlayPauseBtn isPlaying={isPlaying} handleClick={togglePlayPause} />
         </div>
         <TempoSlider handleChange={setTempo} tempo={tempo} />
